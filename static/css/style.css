@@ -1,0 +1,66 @@
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 2rem;
+}
+
+.jumbotron {
+    background-color: #e9ecef;
+    padding: 2rem;
+    border-radius: 0.3rem;
+    margin-top: 2rem;
+}
+
+.card {
+    margin-top: 2rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.navbar {
+    margin-bottom: 2rem;
+}
+
+.list-group-item {
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    margin-right: 0.5rem;
+}
+
+/* Credibility meter styles */
+.credibility-meter {
+    margin: 15px 0;
+}
+/* Progress bar styles */
+.progress {
+    height: 25px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-bar {
+    position: relative;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Color classes */
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.bg-info {
+    background-color: #17a2b8 !important;
+}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Fake News Detector</h1>
+    <p class="lead">Submit news articles to check their credibility.</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="{% url 'submit' %}" role="button">Submit News</a>
+</div>
+
+<h3>Recent Submissions</h3>
+<div class="list-group">
+    {% for article in articles %}
+    <div class="list-group-item">
+        <h5>{{ article.title }}</h5>
+        <span class="badge bg-{% if article.is_verified %}success{% else %}warning{% endif %}">
+            {{ article.verification_result }}
+        </span>
+        <small class="text-muted">Submitted: {{ article.submitted_at|timesince }} ago</small>
+    </div>
+    {% empty %}
+    <p>No articles submitted yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

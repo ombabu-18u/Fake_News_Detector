@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Fake News Detector</h1>
+    
+    <div class="mb-4">
+        <a href="{% url 'submit' %}" class="btn btn-primary">Submit News</a>
+    </div>
+
+    <h3>Recent Submissions</h3>
+    {% for article in articles %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>{{ article.title }}</h5>
+            <p class="mb-1"><strong>Credibility:</strong> 
+                <span class="badge 
+                    {% if article.credibility_score > 70 %}bg-success
+                    {% elif article.credibility_score > 40 %}bg-warning
+                    {% else %}bg-danger{% endif %}">
+                    {{ article.credibility_score }}%
+                </span>
+            </p>
+            <p class="mb-1"><strong>Source:</strong> {{ article.source_url }}</p>
+            <p class="mb-1"><strong>Status:</strong> {{ article.verification_result }}</p>
+            {% if article.keywords %}
+            <p class="mb-1 text-danger"><strong>Flags:</strong> {{ article.keywords }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No articles submitted yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

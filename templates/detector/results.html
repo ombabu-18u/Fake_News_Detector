@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Analysis Results</h2>
+    
+    <div class="alert alert-info">
+        <h4>Overall Statistics</h4>
+        <p>Average Credibility Score: <strong>{{ credibility_stats.avg_score }}%</strong></p>
+        <p>Reliable Sources: <strong>{{ credibility_stats.reliable_sources }}</strong></p>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>
+    {% if article.credibility_score > 0 %}
+        {{ article.credibility_score }}%
+    {% else %}
+        <span class="text-muted">Not analyzed</span>
+    {% endif %}
+</td>
+                <td>{{ article.verification_result }}</td>
+                <td>{{ article.source_url|truncatechars:30 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
